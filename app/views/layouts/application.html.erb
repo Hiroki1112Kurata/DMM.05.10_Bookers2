@@ -19,6 +19,9 @@
           <%= link_to "投稿フォーム（要削除）", new_book_path %>
         </li>
         <li>
+          <%= link_to "Home", user_path(current_user.id) %>
+        </li>
+        <li>
           <%= link_to "Books", books_path %>
         </li>
         <li>
