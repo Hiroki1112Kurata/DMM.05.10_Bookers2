@@ -8,28 +8,34 @@ class BooksController < ApplicationController
     @book =Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to book_path(@book.id)
-    # ★book showページへ移動
+    redirect_to book_path(@book.id), notice:'You have created book successfully.'
   end
 
   def index
     @books = Book.all
     @bookn = Book.new
-    @user = User.find_by id: current_user.id
+    @user = current_user
   end
 
   def show
     @bookn = Book.new
     @book = Book.find(params[:id])
-    @user = User.find_by id: @book.user_id
+    @user = @book.user
   end
 
   def edit
     @book = Book.find(params[:id])
+     if @book.user_id == current_user.id
+
+     else
+      redirect_to users_path
+     end
   end
-  
+
   def update
-    
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to book_path(book.id), notice:'You have updated book successfully.'
   end
 
   def destroy
