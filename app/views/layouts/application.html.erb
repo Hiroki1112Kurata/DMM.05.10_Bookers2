@@ -14,43 +14,71 @@
   <body>
     <header>
       <% if user_signed_in? %>
-        <li>
+        <span>
           <%= link_to "Bookers(要画像へ変更)", root_path %>
+        </span>
+
+        <li>
+          <%= link_to user_path(current_user.id) do %>
+            <i class="fas fa-home"></i>
+            Home
+          <% end %>
         </li>
         <li>
-          <%= link_to "投稿フォーム（要削除）", new_book_path %>
+          <%= link_to users_path do %>
+            <i class="fas fa-users"></i>
+            Users
+          <% end %>
         </li>
         <li>
-          <%= link_to "Home", user_path(current_user.id) %>
+          <%= link_to books_path do %>
+            <i class="fas fa-book-open"></i>
+            Books
+          <% end %>
         </li>
         <li>
-          <%= link_to "Users", users_path %>
-        </li>
-        <li>
-          <%= link_to "Books", books_path %>
-        </li>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i>
+            logout
+          <% end %>
         </li>
       <% else %>
-        <li>
+
+        <span>
           <%= link_to "Bookers(要画像へ変更)", root_path %>
+        </span>
+
+        <li>
+          <%= link_to root_path do %>
+            <i class="fas fa-home"></i>
+            Home
+          <% end %>
         </li>
         <li>
-          <%= link_to "Home", root_path %>
+          <%= link_to about_path do %>
+            <i class="fas fa-link"></i>
+            About
+          <% end %>
         </li>
         <li>
-          <%= link_to "about", about_path %>
+          <%= link_to new_user_registration_path do %>
+            <i class="fas fa-user-plus"></i>
+            sign up
+          <% end %>
         </li>
         <li>
-          <%= link_to "新規登録", new_user_registration_path %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to new_user_session_path do %>
+            <i class="fas fa-sign-in-alt"></i>
+            login
+          <% end %>
         </li>
       <% end %>
     </header>
     <%= render 'layouts/notifications' %>
     <%= yield %>
   </body>
+
+  <footer>
+    <p>CopyRight Infratop.inc</p>
+  </footer>
 </html>
