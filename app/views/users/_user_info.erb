@@ -1,11 +1,18 @@
 <h1>部分テンプレートここから（要削除）</h1>
 <h2>User info</h2>
 <%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "100x100" %>
-<p>name</p>
-<p><%= user.name %></p>
-<p>introduction</p>
-<p><%= user.introduction %></p>
-
+<table>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td><%= user.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+      <td><%= user.introduction %></td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to edit_user_path(@user) do %>
   <i class="fas fa-user-edit"></i>
