@@ -55,7 +55,7 @@
           <% else %>
 
             <span>
-              <%= link_to "Bookers(要画像へ変更)", root_path %>
+              <%= link_to "Bookers", root_path, class: "navbar-brand" %>
             </span>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
              <span class="navbar-toggler-icon"></span>
@@ -94,15 +94,17 @@
       </nav>
     </header>
 
-    <%= render 'layouts/notifications' %>
-    <%= yield %>
+    <main>
+      <%= render 'layouts/notifications' %>
+      <%= yield %>
+    </main>
   </body>
 
   <footer>
     <div class="container mt-5">
       <div class="row">
         <div class="mx-auto">
-          <p>CopyRight Infratop.inc</p>   
+          <p>CopyRight Infratop.inc</p>
         </div>
       </div>
     </div>
