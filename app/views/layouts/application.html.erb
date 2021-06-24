@@ -13,72 +13,98 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
-        <span>
-          <%= link_to "Bookers(要画像へ変更)", root_path %>
-        </span>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
 
-        <li>
-          <%= link_to user_path(current_user.id) do %>
-            <i class="fas fa-home"></i>
-            Home
-          <% end %>
-        </li>
-        <li>
-          <%= link_to users_path do %>
-            <i class="fas fa-users"></i>
-            Users
-          <% end %>
-        </li>
-        <li>
-          <%= link_to books_path do %>
-            <i class="fas fa-book-open"></i>
-            Books
-          <% end %>
-        </li>
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt"></i>
-            logout
-          <% end %>
-        </li>
-      <% else %>
+          <% if user_signed_in? %>
+            <span>
+              <%= link_to "Bookers", root_path, class: "navbar-brand" %>
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <span>
-          <%= link_to "Bookers(要画像へ変更)", root_path %>
-        </span>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
+                    <i class="fas fa-home"></i>
+                    Home
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to users_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-users"></i>
+                    Users
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to books_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open"></i>
+                    Books
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt"></i>
+                    logout
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% else %>
 
-        <li>
-          <%= link_to root_path do %>
-            <i class="fas fa-home"></i>
-            Home
+            <span>
+              <%= link_to "Bookers(要画像へ変更)", root_path %>
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <%= link_to root_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home"></i>
+                    Home
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to about_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-link"></i>
+                    About
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-user-plus"></i>
+                    sign up
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-in-alt"></i>
+                    login
+                  <% end %>
+                </li>
+              </ul>
+            </div>
           <% end %>
-        </li>
-        <li>
-          <%= link_to about_path do %>
-            <i class="fas fa-link"></i>
-            About
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_registration_path do %>
-            <i class="fas fa-user-plus"></i>
-            sign up
-          <% end %>
-        </li>
-        <li>
-          <%= link_to new_user_session_path do %>
-            <i class="fas fa-sign-in-alt"></i>
-            login
-          <% end %>
-        </li>
-      <% end %>
+        </div>
+      </nav>
     </header>
+
     <%= render 'layouts/notifications' %>
     <%= yield %>
   </body>
 
   <footer>
-    <p>CopyRight Infratop.inc</p>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="mx-auto">
+          <p>CopyRight Infratop.inc</p>   
+        </div>
+      </div>
+    </div>
   </footer>
 </html>
