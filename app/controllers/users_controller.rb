@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.id == current_user.id
 
     else
-      redirect_to users_path
+      redirect_to user_path(current_user.id)
     end
   end
 
